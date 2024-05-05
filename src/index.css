@@ -3,5 +3,21 @@
 @tailwind utilities;
 
 body{
-     background-color: #F8F8F8; 
+     background-color: #F3F3F3;
+}
+
+*{
+     font-family: "Poppins", sans-serif;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
