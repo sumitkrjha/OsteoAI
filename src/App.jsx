@@ -5,11 +5,11 @@ import Home from "./pages/Home"
 import Sidebar from "./components/Sidebar"
 import UserInfoBar from "./components/UserInfoBar"
 
+
 function App() {
 
   return (
     <>
-    
       <BrowserRouter>
         <div id="dashboardWrapper" className='h-screen w-full flex'>
             <div id="sidebarContainer" className='bg-white basis-[15%] h-screen rounded-r-2xl p-1 border-y-2 border-r-2 border-r-gray-300 hover:shadow-lg'>
@@ -30,9 +30,7 @@ function App() {
               </div>
             </div>
         </div>
-          
       </BrowserRouter>
-
     </>
   )
 }
