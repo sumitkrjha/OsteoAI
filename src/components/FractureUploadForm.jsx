@@ -4,9 +4,50 @@ import React, { useState } from 'react'
 const FractureUploadForm = () => {
   const [image, setImage] = useState("")
   const [imagePreview, setImagePreview] = useState(null);    
+  const [result, setResult] = useState("none")
+  const [resultImage, setResultImage] = useState(null)
   
+  const base64=()=>{
+    const  reader=new FileReader();
+    reader.readAsDataURL(image);  
+    reader.onload=()=>{
+      const base64String =  reader.result;
+      alert(base64String);
+      predict(base64String);
+    };
+
+    const predict =async(base64)=>{
+ 
+      await fetch('http://localhost:5000/predictfracture',{
+        method:"POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+       
+        body: JSON.stringify(base64)
+      }).then(resp=>{
+        if(resp.ok)
+          resp.json().then(data=>{
+            console.log(data)
+            console.log(data.result[1])
+            handleResults(data);
+          })
+      })
+      .catch(err=>{
+        console.log("Error:"+ err.message);
+      })
+
+    }
+
+  };
+
+  const handleResults = (data)=>{
+    setResult(data.result[0]);
+    setResultImage(data.result[1]);
+  }
     return (
     <>
+
       <Formik 
         initialValues={{
           XrayImage:image,
@@ -29,10 +70,13 @@ const FractureUploadForm = () => {
         
         onSubmit={(values)=>{
           alert(JSON.stringify(values,null,2))
+          base64();
         }}
       >
         <Form className='h-[72%]'>
           <div id="formContainer" className='h-full flex p-2'>
+              { result=="none" ?
+              <>
               <div id="form" className=' basis-3/5 px-4 py-10 flex flex-col items-center justify-center gap-3'>
                 <div id='inputField' className=' h-24 w-full p-2 flex items-center justify-center'>
                   <label htmlFor="patientNo" className='basis-[30%] text-[#3B2B3F] font-semibold '>Patient No.</label>
@@ -46,15 +90,19 @@ const FractureUploadForm = () => {
                 </div>
                 <button type="submit" className='p-2 h-12 w-36 bg-[#FFF] border-2 border-[#3B2B3F] text-green-500 font-semibold rounded-xl hover:shadow-md hover:shadow-[#3B2B3F] hover:border-purply hover:text-green-300 hover:bg-[#3B2B3F]  '>Submit</button>
               </div>
-
+              </>
+                :
+              <>
               {/* To showcase the result  */}
-              {/* <div id="result" className='basis-3/5 p-4 flex items-center justify-center '>
+              <div id="result" className='basis-3/5 p-4 flex items-center justify-center '>
                   <div id="resultCard" className='h-[98%] w-[75%] bg-[#FFF] flex flex-col items-center justify-center gap-3 border-2 border-black rounded-xl shadow-md shadow-[#3B2B3F]'>
-                      <span className=' text-lg font-bold font-serif text-red-500'>Cancer Found</span>
-                      <img src={imagePreview} alt='resultImage' className='h-[80%]' />
+                      {result==true ? <span className=' text-lg font-bold font-serif text-red-500'>Fracture Found</span>:
+                      <span className=' text-lg font-bold font-serif text-green-500'>Fracture Not Found</span>}
+                      <img src={resultImage} alt='resultImage' className='h-[80%]' />
                   </div>
-              </div> */}
-
+              </div>
+              </>
+              }
               
               <div id="uploadBox" className='basis-2/5 p-2 flex items-center justify-center'>
                   <label htmlFor="XrayImage" className='bg-transparent h-[90%] w-[90%] border-2 rounded-xl border-black flex items-center justify-center hover:border-[#3B2B3F] hover:pb-5 hover:shadow-lg hover:shadow-[#3B2B3F] cursor-pointer'
@@ -77,6 +125,7 @@ const FractureUploadForm = () => {
                         const url=URL.createObjectURL(selectedFile);
                         setImagePreview(url);
                     }
+                    setResult("none");
                   }}
                   />
           </div>

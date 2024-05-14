@@ -2,8 +2,6 @@ import React from 'react'
 import ProfileForm from '../components/ProfileForm'
 
 const Profile = () => {
-
-
   return (
     <>
         <div id="contentWrapper" className='bg-white h-full p-6 border-2 border-gray-300 rounded-2xl hover:shadow-lg '>

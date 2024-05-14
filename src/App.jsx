@@ -4,9 +4,12 @@ import History from "./pages/History"
 import Home from "./pages/Home"
 import Sidebar from "./components/Sidebar"
 import UserInfoBar from "./components/UserInfoBar"
-
+import Signup from "./components/Signup"
+import HomeAppMenu from "./components/HomeAppMenu"
+import Login from "./components/Login"
 
 function App() {
+
 
   return (
     <>
@@ -30,7 +33,12 @@ function App() {
               </div>
             </div>
         </div>
+        {/* <Routes>
+          <Route path="/login" element={<Login/>}></Route>
+          <Route path="/" element={<Signup/>}></Route>
+        </Routes> */}
       </BrowserRouter>
+      
     </>
   )
 }

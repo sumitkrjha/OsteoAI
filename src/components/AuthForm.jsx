@@ -1,8 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
-import React from 'react'
 import { Link } from 'react-router-dom';
 
 const AuthForm = ({formid}) => {
+
+    const handleSubmit = async(values)=>{
+        console.log(values)
+        
+    }
   return (
     <>
         {
@@ -23,8 +27,8 @@ const AuthForm = ({formid}) => {
                             return errors;
                         }}
 
-                        onSubmit={(values)=>{
-                            alert(JSON.stringify(values, null, 2))
+                        onSubmit={ (values)=>{
+                            alert(JSON.stringify(values, null, 2));
                         }}
                     >
                         <Form className='flex flex-col items-center justify-center gap-16 mt-4'>
@@ -51,8 +55,8 @@ const AuthForm = ({formid}) => {
             <>
                 <Formik
                         initialValues={{
-                            firstname:'',
-                            lastname:'',
+                            firstName:'',
+                            lastName:'',
                             role:'',
                             email:'',
                             password:'',
@@ -61,8 +65,8 @@ const AuthForm = ({formid}) => {
                         validate={(values)=>{
                             const errors={};
 
-                            if(!values.firstname) errors.firstname='Required';
-                            if(!values.lastname) errors.lastname='Required';
+                            if(!values.firstName) errors.firstName='Required';
+                            if(!values.lastName) errors.lastName='Required';
                             if(!values.role) errors.role='Required';
                             if(!values.email) errors.email='Required';
                             if(!values.password) errors.password='Required';
@@ -70,25 +74,43 @@ const AuthForm = ({formid}) => {
                             return errors;
                         }}
 
-                        onSubmit={(values)=>{
-                            alert(JSON.stringify(values, null, 2))
+                        onSubmit={ async (values, {setSubmitting})=>{
+                            const data=JSON.stringify(values);
+                            handleSubmit(data);   
+                            try {
+                                const response=await fetch("http://localhost:5100/user/signup",{
+                                    method:'POST',
+                                    headers:{
+                                        "Content-type":"application/json"
+                                    },
+                                    body: data
+                                });
+                                const result=await response.json();
+                                alert(result.user._id)
+                            } 
+                            
+                            catch (error) {
+                                console.log("Submit error:", error);
+                                setSubmitting(false);
+                            }      
                         }}
                     >
+
                         <Form className='flex flex-col justify-start items-center gap-16 mt-4'>
                             <div id="personalInfoSection" className='h-12 w-full flex flex-col gap-3 justify-start mb-16'>
-                                <div id="firstname" className='w-full flex items-center justify-start gap-2'>
-                                    <label htmlFor="firstname" className='text-base text-[#3B2B3F] font-semibold ml-1 basis-[25%] flex flex-col'>First Name
-                                    <ErrorMessage name="firstname" component="span" className='text-red-500 font-mono'/>
+                                <div id="firstName" className='w-full flex items-center justify-start gap-2'>
+                                    <label htmlFor="firstName" className='text-base text-[#3B2B3F] font-semibold ml-1 basis-[25%] flex flex-col'>First Name
+                                    <ErrorMessage name="firstName" component="span" className='text-red-500 font-mono'/>
                                     </label>
                                     
-                                    <Field type="text" id="firstname" name="firstname" placeholder="First Name" className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black  outline-none focus:border-b-[#3B2B3F]"/>
+                                    <Field type="text" id="firstName" name="firstName" placeholder="First Name" className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black  outline-none focus:border-b-[#3B2B3F]"/>
                                 </div>
 
-                                <div id="lastname" className='flex items-center justify-center gap-2'>
-                                    <label htmlFor="lastname" className='text-base text-[#3B2B3F] font-semibold ml-1 basis-[25%] flex flex-col'>Last Name
-                                    <ErrorMessage name="lastname" component="div" className='text-red-500'/>
+                                <div id="lastName" className='flex items-center justify-center gap-2'>
+                                    <label htmlFor="lastName" className='text-base text-[#3B2B3F] font-semibold ml-1 basis-[25%] flex flex-col'>Last Name
+                                    <ErrorMessage name="lastName" component="div" className='text-red-500'/>
                                     </label>
-                                    <Field type="text" id="lastname" name="lastname" placeholder="Last Name" className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black  outline-none focus:border-b-[#3B2B3F]"/>
+                                    <Field type="text" id="lastName" name="lastName" placeholder="Last Name" className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black  outline-none focus:border-b-[#3B2B3F]"/>
                                 </div>
 
                                 <div id="role" className='flex items-center justify-center gap-2'>
