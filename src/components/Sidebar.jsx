@@ -1,14 +1,22 @@
 import React, { useState } from 'react'
 import logo from "../assets/logo.png"
 import github from "../assets/SVG/Github.svg"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
+
+    const navigate=useNavigate();
+
     const [activeBtn, setActiveBtn] = useState('home');
     const handleClick=(buttonId)=>{
         setActiveBtn(buttonId)
     }
 
+    const handleLogout=()=>{
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        navigate("/login")
+    }
   return (
     <>
         <div id="sidebarContainer" className=' h-full flex flex-col'>
@@ -18,7 +26,7 @@ const Sidebar = () => {
             <div id="menu" className='basis-[80%] p-2 flex flex-col'>
                 <div id="list" className='basis-[90%] p-2'>
                     <section className='flex flex-col gap-3'>
-                        <Link to="/">
+                        <Link to="/home">
                             <button className={`${activeBtn=='home' ? 'h-12 w-48 p-3 flex justify-start items-center rounded-lg font-semibold bg-[#3B2B3F] text-green-300 gap-3':'h-12 w-48 p-3 flex justify-start items-center rounded-lg font-semibold hover:bg-[#3B2B3F] hover:text-green-300 gap-3'}`}
                             onClick={()=>{handleClick('home')}}
                             >
@@ -54,7 +62,8 @@ const Sidebar = () => {
                     </section>
                 </div>
                 <div id="logout" className='basis-[10%] p-3 flex items-center justify-center'>
-                    <button className='h-12 w-48 flex items-center justify-center gap-7 border-2 border-red-500 rounded-xl text-red-500 font-semibold text-base hover:bg-red-500 hover:text-white hover:shadow-[#9e9d9d] hover:shadow-md'>
+                    <button className='h-12 w-48 flex items-center justify-center gap-7 border-2 border-red-500 rounded-xl text-red-500 font-semibold text-base hover:bg-red-500 hover:text-white hover:shadow-[#9e9d9d] hover:shadow-md'
+                    onClick={handleLogout}>
                         Logout
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>

@@ -1,0 +1,33 @@
+/* Form Loader */
+#loader {
+    width: fit-content;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 30px;
+    padding-bottom: 8px;
+    background: linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat;
+    animation: l2 2s linear infinite;
+  }
+  #loader:before {
+    content:"Loading..."
+  }
+  @keyframes l2 {to{background-size: 100% 3px}}
+
+
+  /* Auth Loader */
+
+#Authloader {
+    width: 45px;
+    aspect-ratio: 1;
+    --c: conic-gradient(from -90deg,#3B2B3F 90deg,#0000 0);
+    background: var(--c), var(--c);
+    background-size: 40% 40%;
+    animation: l19 1s infinite alternate;
+  }
+  @keyframes l19 {
+   0%,
+   10%  {background-position: 0 0,0            calc(100%/3)}
+   50%  {background-position: 0 0,calc(100%/3) calc(100%/3)}
+   90%,
+   100% {background-position: 0 0,calc(100%/3) 0}
+  }

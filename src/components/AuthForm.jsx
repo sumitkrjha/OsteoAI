@@ -1,12 +1,16 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import "../App.css"
 
 const AuthForm = ({formid}) => {
 
+    const [isLoader, setIsLoader] = useState(false)
+
     const handleSubmit = async(values)=>{
         console.log(values)
-        
     }
+    const navigate=useNavigate();
   return (
     <>
         {
@@ -21,30 +25,59 @@ const AuthForm = ({formid}) => {
                         validate={(values)=>{
                             const errors={};
 
-                            if(!values.username) errors.username='Required';
+                            if(!values.email) errors.email='Required';
                             if(!values.password) errors.password='Required';
 
                             return errors;
                         }}
 
-                        onSubmit={ (values)=>{
-                            alert(JSON.stringify(values, null, 2));
+                        onSubmit={ async (values, {setSubmitting})=>{
+                            const data=JSON.stringify(values);   
+                            try {
+                                setIsLoader(true)
+                                const response=await fetch("http://localhost:5100/auth/login",{
+                                    method:'POST',
+                                    headers:{
+                                        "Content-type":"application/json"
+                                    },
+                                    body: data
+                                });
+                                const result=await response.json();
+                                
+                                if(result.user._id){
+                                    setIsLoader(false)
+                                    navigate("/home");
+                                    const user=JSON.stringify(result.user);
+                                    localStorage.setItem("user", user);
+                                    localStorage.setItem("token", result.token);
+                                }
+                            } 
+                            
+                            catch (error) {
+                                console.log("Submit error:", error);
+                                setSubmitting(false);
+                            }      
                         }}
+
+                    
                     >
                         <Form className='flex flex-col items-center justify-center gap-16 mt-4'>
                             <div id="inputSection" className='h-12 w-[90%] flex flex-col gap-2 justify-start'>
                                 <label htmlFor="email" className='text-base text-[#3B2B3F] font-semibold ml-1'>Username</label>
                                 <Field type="email" id="email" name="email" placeholder="Email" className="h-12 w-full p-4 rounded-lg border-b-2 border-b-black  outline-none focus:border-b-[#3B2B3F]"/>
-                                <ErrorMessage name="username" component="div" className='text-red-500'/>
+                                <ErrorMessage name="email" component="div" className='text-red-500'/>
                             </div>
                             <div id="inputSection" className='h-12 w-[90%] flex flex-col gap-2 justify-start'>
                                 <label htmlFor="password" className='text-base text-[#3B2B3F] font-semibold ml-1'>Password</label>
                                 <Field type="password" id="password" name="password" placeholder="Password" className="h-12 w-full p-4 rounded-lg border-b-2 border-b-black outline-none focus:border-b-[#3B2B3F]"/>
                                 <ErrorMessage name="password" component="div" className='text-red-500'/>
                             </div>
+                            {isLoader ? <div id="Authloader"></div> : <>
                             <div id="submitBtn" className='mt-5'>
                                 <button type="submit" className='p-2 h-12 w-36 bg-[#FFF] border-2 border-[#3B2B3F] text-green-500 font-semibold rounded-xl hover:shadow-md hover:shadow-[#3B2B3F] hover:border-purply hover:text-green-300 hover:bg-[#3B2B3F]'>Login</button>
                             </div>
+                            </>
+                            }
                             <p className='mt-[-30px] text-base text-[#3B2B3F]'>Do not have an account? <strong className=' cursor-pointer'><Link to="/signup">Register</Link></strong></p>
                         </Form>
                     </Formik>
@@ -86,7 +119,7 @@ const AuthForm = ({formid}) => {
                                     body: data
                                 });
                                 const result=await response.json();
-                                alert(result.user._id)
+                                navigate("/login")
                             } 
                             
                             catch (error) {
@@ -136,9 +169,11 @@ const AuthForm = ({formid}) => {
                                 <Field type="password" id="password" name="password" placeholder="Password" className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black outline-none focus:border-b-[#3B2B3F]"/>
                                 </div>
                             </div>
+                            {isLoader ? <div id="Authloader"></div> : <>
                             <div id="submitBtn" className='mt-5'>
                                 <button type="submit" className='p-2 h-12 w-36 bg-[#FFF] border-2 border-[#3B2B3F] text-green-500 font-semibold rounded-xl hover:shadow-md hover:shadow-[#3B2B3F] hover:border-purply hover:text-green-300 hover:bg-[#3B2B3F]'>Register</button>
                             </div>
+                            </>}
                             <p className='mt-[-30px] text-base text-[#3B2B3F]'>Already have an account? <strong className=' cursor-pointer'><Link to="/login">Login</Link></strong></p>
                         </Form>
                     </Formik>

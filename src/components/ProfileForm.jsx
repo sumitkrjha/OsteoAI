@@ -1,9 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
-import user from "../assets/user.jpg"
+import user from "../assets/SVG/UserAvatar.svg"
 import { useState } from 'react';
 
 const ProfileForm = () => {
+
     const [imagePreview, setImagePreview] = useState(user);    
+    
   return (
     <>
         <Formik

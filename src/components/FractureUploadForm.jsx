@@ -1,23 +1,24 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useState } from 'react'
+import "../App.css"
 
 const FractureUploadForm = () => {
   const [image, setImage] = useState("")
   const [imagePreview, setImagePreview] = useState(null);    
   const [result, setResult] = useState("none")
   const [resultImage, setResultImage] = useState(null)
+  const [isLoader, setIsLoader] = useState(false)
   
   const base64=()=>{
     const  reader=new FileReader();
     reader.readAsDataURL(image);  
     reader.onload=()=>{
       const base64String =  reader.result;
-      alert(base64String);
       predict(base64String);
     };
 
     const predict =async(base64)=>{
- 
+      setIsLoader(true);
       await fetch('http://localhost:5000/predictfracture',{
         method:"POST",
         headers: {
@@ -28,8 +29,6 @@ const FractureUploadForm = () => {
       }).then(resp=>{
         if(resp.ok)
           resp.json().then(data=>{
-            console.log(data)
-            console.log(data.result[1])
             handleResults(data);
           })
       })
@@ -42,6 +41,7 @@ const FractureUploadForm = () => {
   };
 
   const handleResults = (data)=>{
+    setIsLoader(false);
     setResult(data.result[0]);
     setResultImage(data.result[1]);
   }
@@ -69,7 +69,6 @@ const FractureUploadForm = () => {
         }}
         
         onSubmit={(values)=>{
-          alert(JSON.stringify(values,null,2))
           base64();
         }}
       >
@@ -78,6 +77,7 @@ const FractureUploadForm = () => {
               { result=="none" ?
               <>
               <div id="form" className=' basis-3/5 px-4 py-10 flex flex-col items-center justify-center gap-3'>
+                {isLoader ? <div id="loader"></div> : <>
                 <div id='inputField' className=' h-24 w-full p-2 flex items-center justify-center'>
                   <label htmlFor="patientNo" className='basis-[30%] text-[#3B2B3F] font-semibold '>Patient No.</label>
                   <ErrorMessage name="patientNo" component="div" className="text-red-500" />
@@ -89,6 +89,8 @@ const FractureUploadForm = () => {
                   <Field type="text" name="patientName" id="patientName" className='p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' />
                 </div>
                 <button type="submit" className='p-2 h-12 w-36 bg-[#FFF] border-2 border-[#3B2B3F] text-green-500 font-semibold rounded-xl hover:shadow-md hover:shadow-[#3B2B3F] hover:border-purply hover:text-green-300 hover:bg-[#3B2B3F]  '>Submit</button>
+                </>
+                }
               </div>
               </>
                 :
