@@ -1,14 +1,26 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "../App.css"
+import {UserContext} from "../pages/Dashboard"
 
 const TumorUploadForm = () => {
+
   const [image, setImage] = useState("")
   const [imagePreview, setImagePreview] = useState(null) 
   const [result, setResult] = useState("none")
   const [resultImage, setResultImage] = useState(null)
   const [isLoader, setIsLoader] = useState(false)
   
+  const {user}=useContext(UserContext);
+
+  const payload={
+    email:'',
+    patientName:'',
+    patientNumber:'',
+    resultImage:'',
+    resultValue:'',
+  };
+
   const base64=()=>{
     const  reader=new FileReader();
     reader.readAsDataURL(image);  
@@ -29,8 +41,7 @@ const TumorUploadForm = () => {
       }).then(resp=>{
         if(resp.ok)
           resp.json().then(data=>{
-            console.log(data)
-            console.log(data.result[1])
+            
             handleResults(data);
           })
       })
@@ -42,10 +53,33 @@ const TumorUploadForm = () => {
 
   };
 
+  const uploadTumorData = async(payload)=>{
+    const data=JSON.stringify(payload)
+    try {
+        const response=await fetch('http://localhost:5100/data/tumor',{
+        method:'POST',
+        headers:{
+          "Content-Type": "application/json"
+        },
+        body: data
+      });
+        const result=await response.json()
+        console.log(result)
+    } catch (error) {
+       console.log('Tumor Data upload error')
+    }
+  }
+
   const handleResults = (data)=>{
     setIsLoader(false);
     setResult(data.result[0]);
     setResultImage(data.result[1]);
+    
+    payload.email=user.email;
+    payload.resultImage=data.result[1];
+    payload.resultValue=data.result[0];
+
+    uploadTumorData(payload)
   }
   return (
     <>
@@ -71,6 +105,8 @@ const TumorUploadForm = () => {
         
         onSubmit={(values)=>{
           base64();
+          payload.patientName=values.patientName;
+          payload.patientNumber=values.patientNo;
         }}
       >
         <Form className='h-[72%]'>

@@ -1,6 +1,8 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "../App.css"
+import { UserContext } from '../pages/Dashboard';
+
 
 const FractureUploadForm = () => {
   const [image, setImage] = useState("")
@@ -9,6 +11,16 @@ const FractureUploadForm = () => {
   const [resultImage, setResultImage] = useState(null)
   const [isLoader, setIsLoader] = useState(false)
   
+  const {user}=useContext(UserContext);
+
+  const payload={
+    email:'',
+    patientName:'',
+    patientNumber:'',
+    resultImage:'',
+    resultValue:'',
+  };
+
   const base64=()=>{
     const  reader=new FileReader();
     reader.readAsDataURL(image);  
@@ -37,13 +49,39 @@ const FractureUploadForm = () => {
       })
 
     }
-
   };
+
+  const uploadFractureData = async(payload)=>{
+    const data=JSON.stringify(payload)
+
+    try {
+        const response=await fetch('http://localhost:5100/upload/fracture',{
+        method:'POST',
+        headers:{
+          "Content-Type": "application/json"
+        },
+        body: data
+      });
+        const result=await response.json()
+        console.log(result)
+    } catch (error) {
+       console.log('Fracture Data upload error', error.message)
+    }
+  }
 
   const handleResults = (data)=>{
     setIsLoader(false);
     setResult(data.result[0]);
     setResultImage(data.result[1]);
+    
+    payload.resultImage=data.result[1];
+    payload.email=user.email;
+    payload.resultValue=data.result[0];
+    
+    // console.log(payload)
+
+    uploadFractureData(payload)
+ 
   }
     return (
     <>
@@ -70,6 +108,8 @@ const FractureUploadForm = () => {
         
         onSubmit={(values)=>{
           base64();
+          payload.patientName=values.patientName;
+          payload.patientNumber=values.patientNo;
         }}
       >
         <Form className='h-[72%]'>

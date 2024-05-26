@@ -31,3 +31,20 @@
    90%,
    100% {background-position: 0 0,calc(100%/3) 0}
   }
+
+
+  /* Scroll bar on History Page */
+  #itemContainer::-webkit-scrollbar {
+    width: 4px; /* make the scrollbar a little thinner */
+    height: 4px;
+    background-color: white; /* set the scrollbar color */
+  }
+  
+  #itemContainer::-webkit-scrollbar-thumb {
+    background-color: #3B2B3F; /* set the scrollbar thumb color */
+    border-radius: 10px;
+  }
+  
+  #itemContainer::-webkit-scrollbar-track {
+    background-color: transparent; /* set the scrollbar track color */
+  }

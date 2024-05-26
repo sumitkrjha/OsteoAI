@@ -2,14 +2,12 @@ import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import "../App.css"
+import toast from 'react-hot-toast';
 
 const AuthForm = ({formid}) => {
 
     const [isLoader, setIsLoader] = useState(false)
 
-    const handleSubmit = async(values)=>{
-        console.log(values)
-    }
     const navigate=useNavigate();
   return (
     <>
@@ -43,17 +41,22 @@ const AuthForm = ({formid}) => {
                                     body: data
                                 });
                                 const result=await response.json();
-                                
-                                if(result.user._id){
+                                if(result.token){
                                     setIsLoader(false)
                                     navigate("/home");
                                     const user=JSON.stringify(result.user);
                                     localStorage.setItem("user", user);
                                     localStorage.setItem("token", result.token);
                                 }
+                                else{
+                                    setIsLoader(false)
+                                    toast.error(result.message)
+                                }
                             } 
                             
                             catch (error) {
+                                setIsLoader(false)
+                                toast.error("Error submitting form")
                                 console.log("Submit error:", error);
                                 setSubmitting(false);
                             }      
@@ -63,14 +66,18 @@ const AuthForm = ({formid}) => {
                     >
                         <Form className='flex flex-col items-center justify-center gap-16 mt-4'>
                             <div id="inputSection" className='h-12 w-[90%] flex flex-col gap-2 justify-start'>
-                                <label htmlFor="email" className='text-base text-[#3B2B3F] font-semibold ml-1'>Username</label>
+                                <label htmlFor="email" className='text-base text-[#3B2B3F] font-semibold ml-1 flex gap-4'>Username
+                                <ErrorMessage name="email" component="div" className='text-red-500 font-mono'/>
+                                </label>
                                 <Field type="email" id="email" name="email" placeholder="Email" className="h-12 w-full p-4 rounded-lg border-b-2 border-b-black  outline-none focus:border-b-[#3B2B3F]"/>
-                                <ErrorMessage name="email" component="div" className='text-red-500'/>
+                                <p className=' font-mono text-sm text-[#3B2B3F] pl-3'>Use: test@test.com</p>
                             </div>
                             <div id="inputSection" className='h-12 w-[90%] flex flex-col gap-2 justify-start'>
-                                <label htmlFor="password" className='text-base text-[#3B2B3F] font-semibold ml-1'>Password</label>
+                                <label htmlFor="password" className='text-base text-[#3B2B3F] font-semibold ml-1 flex gap-4'>Password
+                                <ErrorMessage name="password" component="div" className='text-red-500 font-mono'/>
+                                </label>
                                 <Field type="password" id="password" name="password" placeholder="Password" className="h-12 w-full p-4 rounded-lg border-b-2 border-b-black outline-none focus:border-b-[#3B2B3F]"/>
-                                <ErrorMessage name="password" component="div" className='text-red-500'/>
+                                <p className=' font-mono text-sm text-[#3B2B3F] pl-3'>Use: test@123</p>
                             </div>
                             {isLoader ? <div id="Authloader"></div> : <>
                             <div id="submitBtn" className='mt-5'>
@@ -108,8 +115,7 @@ const AuthForm = ({formid}) => {
                         }}
 
                         onSubmit={ async (values, {setSubmitting})=>{
-                            const data=JSON.stringify(values);
-                            handleSubmit(data);   
+                            const data=JSON.stringify(values);  
                             try {
                                 const response=await fetch("http://localhost:5100/user/signup",{
                                     method:'POST',
@@ -119,10 +125,17 @@ const AuthForm = ({formid}) => {
                                     body: data
                                 });
                                 const result=await response.json();
-                                navigate("/login")
+                                console.log(result.message)
+                                if(result.message=="user created successfully"){
+                                    navigate("/login")
+                                }
+                                else{
+                                    toast.error("Email already resigtered!")
+                                }
                             } 
                             
                             catch (error) {
+                                toast.error("Error submitting form")
                                 console.log("Submit error:", error);
                                 setSubmitting(false);
                             }      
@@ -141,14 +154,14 @@ const AuthForm = ({formid}) => {
 
                                 <div id="lastName" className='flex items-center justify-center gap-2'>
                                     <label htmlFor="lastName" className='text-base text-[#3B2B3F] font-semibold ml-1 basis-[25%] flex flex-col'>Last Name
-                                    <ErrorMessage name="lastName" component="div" className='text-red-500'/>
+                                    <ErrorMessage name="lastName" component="div" className='text-red-500 font-mono'/>
                                     </label>
                                     <Field type="text" id="lastName" name="lastName" placeholder="Last Name" className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black  outline-none focus:border-b-[#3B2B3F]"/>
                                 </div>
 
                                 <div id="role" className='flex items-center justify-center gap-2'>
                                     <label htmlFor="role" className='text-base text-[#3B2B3F] font-semibold ml-1 basis-[25%] text-center flex flex-col'>Role
-                                    <ErrorMessage name="role" component="div" className='text-red-500'/>
+                                    <ErrorMessage name="role" component="div" className='text-red-500 font-mono'/>
                                     </label>
                                     <Field type="text" id="role" name="role" placeholder="Role" className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black  outline-none focus:border-b-[#3B2B3F]"/>
                                 </div>
@@ -157,14 +170,14 @@ const AuthForm = ({formid}) => {
                             <div id="credentialInputSection" className='h-12 w-full flex flex-col gap-3 justify-start'>
                                 <div id="username" className='flex items-center justify-center gap-2'>
                                     <label htmlFor="email" className='text-base text-[#3B2B3F] font-semibold ml-1 basis-[25%] flex flex-col'>Username
-                                    <ErrorMessage name="email" component="div" className='text-red-500'/>
+                                    <ErrorMessage name="email" component="div" className='text-red-500 font-mono'/>
                                     </label>
                                     <Field type="email" id="email" name="email" placeholder="Email" className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black  outline-none focus:border-b-[#3B2B3F]"/>
                                 </div>
 
                                 <div id="password" className='flex items-center justify-center gap-2'>
                                 <label htmlFor="password" className='text-base text-[#3B2B3F] font-semibold ml-1 basis-[25%] flex flex-col'>Password
-                                <ErrorMessage name="password" component="div" className='text-red-500'/>
+                                <ErrorMessage name="password" component="div" className='text-red-500 font-mono'/>
                                 </label>
                                 <Field type="password" id="password" name="password" placeholder="Password" className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black outline-none focus:border-b-[#3B2B3F]"/>
                                 </div>

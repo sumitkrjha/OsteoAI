@@ -5,11 +5,14 @@ import Home from "./pages/Home"
 import Signup from "./components/Signup"
 import Login from "./components/Login"
 import Dashboard from './pages/Dashboard';
+// import Dataset from './pages/Dataset';
+
 
 
 function App() {
 
   return (
+
       <Routes>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/signup" element={<Signup/>}></Route>
@@ -17,8 +20,10 @@ function App() {
           <Route path="home" element={<Home />} />
           <Route path="profile" element={<Profile />} />
           <Route path="history" element={<History />} />
+          {/* <Route path="exampleImages" element={<Dataset/>}  /> */}
         </Route>
       </Routes>
+
   );
 }
 export default App

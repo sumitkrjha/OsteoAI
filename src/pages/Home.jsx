@@ -3,8 +3,8 @@ import HomeAppMenu from '../components/HomeAppMenu'
 import TumorUploadForm from '../components/TumorUploadForm'
 import FractureUploadForm from '../components/FractureUploadForm'
 
+
 const Home = () => {
-  
   const [activeApp, setActiveApp] = useState('tumor')
   return (
     <>
