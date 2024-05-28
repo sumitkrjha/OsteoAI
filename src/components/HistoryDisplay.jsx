@@ -17,7 +17,7 @@ const HistoryDisplay = () => {
         setIsLoading("true")
         try {
             const data=JSON.stringify({email:user.email})
-            const response = await fetch('http://localhost:5100/find/returnTumor',{
+            const response = await fetch('https://osteoai-backend.onrender.com/find/returnTumor',{
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json'
@@ -33,7 +33,7 @@ const HistoryDisplay = () => {
 
             // To load the Fracture data
             const email=JSON.stringify({email:user.email})
-            const res = await fetch('http://localhost:5100/get/returnFracture',{
+            const res = await fetch('https://osteoai-backend.onrender.com/get/returnFracture',{
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json'

@@ -8,8 +8,8 @@ export const UserContext = createContext();
 
 const Dashboard = () => {
   const navigate=useNavigate();
-  const token=localStorage.getItem("token");
   const [user, setUser] = useState('');
+  const token=localStorage.getItem("token");
   const [isCollasp, setIsCollasp] = useState(false);
   const [buttonClick, setButtonClick] = useState(false);
   const [screenwidth, setScreenwidth]=useState("")
@@ -17,7 +17,8 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchUser = async(e)=>{
         try {
-          const response=await fetch("http://localhost:5100/api/user",{
+          console.log("Token:",token)
+          const response=await fetch("https://osteoai-backend.onrender.com/api/user",{
             headers:{
               "Authorization": `Bearer ${token}`,
             },
@@ -25,6 +26,7 @@ const Dashboard = () => {
           
           const result=await response.json();
           setUser(result)
+          console.log(result)
         } catch (error) {
           console.error(error.message);
         }

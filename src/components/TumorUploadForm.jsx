@@ -31,7 +31,7 @@ const TumorUploadForm = () => {
 
     const predict =async(base64)=>{
       setIsLoader(true);
-      await fetch('http://localhost:5000/predicttumor',{
+      await fetch('https://osteoai-backend.onrender.com/predicttumor',{
         method:"POST",
         headers: {
           "Content-Type": "application/json"
@@ -56,7 +56,7 @@ const TumorUploadForm = () => {
   const uploadTumorData = async(payload)=>{
     const data=JSON.stringify(payload)
     try {
-        const response=await fetch('http://localhost:5100/data/tumor',{
+        const response=await fetch('https://osteoai-backend.onrender.com/data/tumor',{
         method:'POST',
         headers:{
           "Content-Type": "application/json"

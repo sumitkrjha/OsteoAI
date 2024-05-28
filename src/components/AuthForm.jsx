@@ -33,7 +33,7 @@ const AuthForm = ({formid}) => {
                             const data=JSON.stringify(values);   
                             try {
                                 setIsLoader(true)
-                                const response=await fetch("http://localhost:5100/auth/login",{
+                                const response=await fetch("https://osteoai-backend.onrender.com/auth/login",{
                                     method:'POST',
                                     headers:{
                                         "Content-type":"application/json"
@@ -117,7 +117,7 @@ const AuthForm = ({formid}) => {
                         onSubmit={ async (values, {setSubmitting})=>{
                             const data=JSON.stringify(values);  
                             try {
-                                const response=await fetch("http://localhost:5100/user/signup",{
+                                const response=await fetch("https://osteoai-backend.onrender.com/user/signup",{
                                     method:'POST',
                                     headers:{
                                         "Content-type":"application/json"

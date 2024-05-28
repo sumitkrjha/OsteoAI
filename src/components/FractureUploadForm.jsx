@@ -31,7 +31,7 @@ const FractureUploadForm = () => {
 
     const predict =async(base64)=>{
       setIsLoader(true);
-      await fetch('http://localhost:5000/predictfracture',{
+      await fetch('https://osteoai-backend.onrender.com/predictfracture',{
         method:"POST",
         headers: {
           "Content-Type": "application/json"
@@ -55,7 +55,7 @@ const FractureUploadForm = () => {
     const data=JSON.stringify(payload)
 
     try {
-        const response=await fetch('http://localhost:5100/upload/fracture',{
+        const response=await fetch('https://osteoai-backend.onrender.com/upload/fracture',{
         method:'POST',
         headers:{
           "Content-Type": "application/json"
