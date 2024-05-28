@@ -109,7 +109,7 @@ const TumorUploadForm = () => {
           payload.patientNumber=values.patientNo;
         }}
       >
-        <Form className='h-[72%] max-[660px]:h-[95%]'>
+        <Form className='h-[72%] max-[660px]:h-[85%] max-[530px]:h-[95%]'>
           <div id="formContainer" className='h-full flex max-[660px]:flex-col p-2'>
                 <div id="uploadBox" className='basis-2/5 p-2 flex items-center justify-center'>
                   <label htmlFor="XrayImage" className='bg-transparent h-[90%] max-[660px]:h-[95%] w-[90%] max-[660px]:w-[75%]  border-2 rounded-xl border-black flex items-center justify-center hover:border-[#3B2B3F] hover:pb-5 hover:shadow-lg hover:shadow-[#3B2B3F] cursor-pointer'
@@ -160,11 +160,11 @@ const TumorUploadForm = () => {
               :
               <>
               {/* To showcase the result.jpg */}
-              <div id="result" className='basis-3/5 p-4 flex items-center justify-center '>
-                  <div id="resultCard" className='h-[98%] w-[75%] bg-[#FFF] flex flex-col items-center justify-center gap-3 border-2 border-black rounded-xl shadow-md shadow-[#3B2B3F]'>
+              <div id="result" className='basis-3/5 p-4  max-[530px]:py-0 flex  max-[530px]:items-start items-center justify-center '>
+                  <div id="resultCard" className='h-[98%] w-[75%] max-[530px]:h-[53%] max-[530px]:w-[85%] bg-[#FFF] flex flex-col  max-[530px]:flex-row items-center justify-center gap-3 border-2 border-black rounded-xl shadow-md shadow-[#3B2B3F]'>
                       {result==true ? <span className=' text-lg font-bold font-serif text-red-500'>Cancer Found</span>:
-                      <span className=' text-lg font-bold font-serif text-green-500'>Cancer Not Found</span>}
-                      <img src={resultImage} alt='resultImage' className='h-[80%]' />
+                      <span className=' text-lg  max-[530px]:text-sm font-bold font-serif text-green-500'>Cancer Not Found</span>}
+                      <img src={resultImage} alt='resultImage' className='h-[80%]  max-[530px]:h-[95%]' />
                   </div>
               </div> 
               </>

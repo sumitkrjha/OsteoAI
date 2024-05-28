@@ -112,7 +112,7 @@ const FractureUploadForm = () => {
           payload.patientNumber=values.patientNo;
         }}
       >
-        <Form className='h-[72%] max-[660px]:h-[95%]'>
+        <Form className='h-[72%] max-[660px]:h-[85%] max-[530px]:h-[95%]'>
           <div id="formContainer" className='h-full flex max-[660px]:flex-col-reverse p-2'>
               { result=="none" ?
               <>
@@ -138,13 +138,13 @@ const FractureUploadForm = () => {
                 :
               <>
               {/* To showcase the result  */}
-              <div id="result" className='basis-3/5 p-4 max-[660px]:p-0 flex items-center justify-center '>
-                  <div id="resultCard" className='h-[98%] max-[660px]:h-[80%] w-[75%] bg-[#FFF] flex flex-col items-center justify-center gap-3 border-2 border-black rounded-xl shadow-md shadow-[#3B2B3F]'>
+              <div id="result" className='basis-3/5 p-4  max-[650px]:py-0 flex  max-[650px]:items-start items-center justify-center '>
+                  <div id="resultCard" className='h-[98%] w-[75%] max-[650px]:h-[53%] max-[650px]:w-[85%] bg-[#FFF] flex flex-col  max-[650px]:flex-row items-center justify-center gap-3 border-2 border-black rounded-xl shadow-md shadow-[#3B2B3F]'>
                       {result==true ? <span className=' text-lg font-bold font-serif text-red-500'>Fracture Found</span>:
-                      <span className=' text-lg font-bold font-serif text-green-500'>Fracture Not Found</span>}
-                      <img src={resultImage} alt='resultImage' className='h-[80%]' />
+                      <span className=' text-lg  max-[530px]:text-sm font-bold font-serif text-green-500'>Fracture Not Found</span>}
+                      <img src={resultImage} alt='resultImage' className='h-[80%]  max-[650px]:h-[95%]' />
                   </div>
-              </div>
+              </div> 
               </>
               }
               
