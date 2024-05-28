@@ -64,18 +64,18 @@ const Dashboard = () => {
                   <Sidebar screenwidth={screenwidth} setIsCollasp={setIsCollasp} setButtonClick={setButtonClick}/>
               </div>
               {buttonClick==true ? <></> :
-              <button onClick={handleCollasp} className={screenwidth>=1200 ? 'hidden' : 'h-8 w-8 mt-2'}>
-                <img src={menu} alt="menu" />
+              <button onClick={handleCollasp} className={screenwidth>=1200 ? 'hidden' : 'h-8 w-8 mt-2 shrink-0'}>
+                <img src={menu} alt="menu" className='sm:shrink-0'/>
               </button>
               }
               <div id="contentAreaContainer" className={(screenwidth<=1200 || isCollasp===true) ? 'basis-[100%] p-1':' basis-[85%] p-1'}>
-                <div id="contentcontainer" className={screenwidth<=1100 ? 'h-full flex flex-col-reverse' : 'h-full flex'}>
-                  <div id="mainContentContainer" className={screenwidth<=1100 ? 'basis-[90%] ':'basis-[80%] overflow-y-auto'}>
+                <div id="contentcontainer" className={screenwidth<=1100 ? 'h-full flex flex-col' : 'h-full flex'}>
+                  <div id="mainContentContainer" className='max[1100px]:basis-[90%] max-[530px]:basis-[95%] basis-[80%] min-[1100px]:overflow-y-auto'>
                     <UserContext.Provider value={{user, setUser}}>
                       <Outlet/>
                     </UserContext.Provider>
                   </div>
-                  <div id="userInfoContainer" className={screenwidth<=1100 ? 'basis-[10%]' :' basis-[20%]'}>
+                  <div id="userInfoContainer" className='max-[1100px]:basis-[10%] basis-[20%]'>
                     <UserContext.Provider value={{user, setUser}}>
                       <UserInfoBar screenwidth={screenwidth}/>
                     </UserContext.Provider>

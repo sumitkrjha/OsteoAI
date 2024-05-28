@@ -48,3 +48,20 @@
   #itemContainer::-webkit-scrollbar-track {
     background-color: transparent; /* set the scrollbar track color */
   }
+  
+  
+  /* Form Container */
+  #formContainer::-webkit-scrollbar {
+    width: 4px; /* make the scrollbar a little thinner */
+    height: 4px;
+    background-color: white; /* set the scrollbar color */
+  }
+  
+  #formContainer::-webkit-scrollbar-thumb {
+    background-color: #3B2B3F; /* set the scrollbar thumb color */
+    border-radius: 10px;
+  }
+  
+  #formContainer::-webkit-scrollbar-track {
+    background-color: transparent; /* set the scrollbar track color */
+  }

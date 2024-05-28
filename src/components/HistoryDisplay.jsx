@@ -82,11 +82,11 @@ const HistoryDisplay = () => {
   return (
     <>
       <div id="wrapper" className='h-[95%] p-2'>
-        <div id="controlContainer" className='h-20 w-full flex justify-between items-center px-2'>
+        <div id="controlContainer" className='h-20 max-[860px]:h-40 w-full flex max-[860px]:flex-col max-[860px]:items-start justify-between items-center px-2'>
             <button className='my-2 p-2 h-12 w-36 bg-[#FFF] border-2 border-[#3B2B3F] text-green-500 font-semibold rounded-xl hover:shadow-md hover:shadow-[#3B2B3F] hover:border-purply hover:text-green-300 hover:bg-[#3B2B3F]' onClick={loadTumorData}>Load Data</button>
             {(tumorMessage==true || fractureMessage==true) ? 
-                <div className='my-2 ml-10 p-2 h-18 w-[60%] bg-[#FFF] border-2 border-[#3B2B3F] rounded-xl flex items-center justify-center gap-4 hover:shadow-md hover:shadow-[#3B2B3F]'>
-                    <p className='text-lg font-bold text-[#3B2B3F]'>Filter :</p>
+                <div className=' my-2 ml-10 max-[860px]:ml-0 p-2 h-18 max-[530px]:w-[90%] w-[60%]  border-2 border-[#3B2B3F] rounded-xl flex items-center justify-center gap-4 hover:shadow-md hover:shadow-[#3B2B3F]'>
+                    <p className='text-lg font-bold text-[#3B2B3F]'>Filter</p>
                     <button onClick={all} className='p-2 h-12 w-36 bg-[#FFF] border-2 border-[#3B2B3F] text-green-500 font-semibold rounded-xl hover:shadow-md hover:shadow-[#3B2B3F] hover:border-purply hover:text-green-300 hover:bg-[#3B2B3F] focus:shadow-md focus:shadow-[#3B2B3F] focus:border-purply focus:text-green-300 focus:bg-[#3B2B3F]'>All</button>
                     <button onClick={filterTumor} className='p-2 h-12 w-36 bg-[#FFF] border-2 border-[#3B2B3F] text-green-500 font-semibold rounded-xl hover:shadow-md hover:shadow-[#3B2B3F] hover:border-purply hover:text-green-300 hover:bg-[#3B2B3F] focus:shadow-md focus:shadow-[#3B2B3F] focus:border-purply focus:text-green-300 focus:bg-[#3B2B3F]'>Tumor</button>
                     <button onClick={filterFracture} className='p-2 h-12 w-36 bg-[#FFF] border-2 border-[#3B2B3F] text-green-500 font-semibold rounded-xl hover:shadow-md hover:shadow-[#3B2B3F] hover:border-purply hover:text-green-300 hover:bg-[#3B2B3F] focus:shadow-md focus:shadow-[#3B2B3F] focus:border-purply focus:text-green-300 focus:bg-[#3B2B3F]'>Fracture</button>
@@ -99,10 +99,10 @@ const HistoryDisplay = () => {
         {isLoading=="true" ? <div id="loader"></div>
             :
             <>
-            <div id="itemContainer" className='h-[90%] w-full overflow-y-scroll p-2 grid grid-cols-3 gap-2'>
+            <div id="itemContainer" className='h-[90%] max-[860px]:h-[80%] max-[530px]:h-[90%] w-full overflow-y-scroll p-2 grid grid-cols-3 max-[530px]:grid-cols-2 gap-2'>
                 {tumorMessage==true ? <> 
                 {tumorItems.map((item) => (
-                    <div id="container" className={(filter=="tumor" || filter=="all")? 'h-auto w-full border-2 border-[#3B2B3F] p-2 mb-2 rounded-xl shadow-md shadow-gray-600 flex flex-col items-center justify-center' :'hidden'} >
+                    <div id="container" className={(filter=="tumor" || filter=="all")? 'w-full border-2 border-[#3B2B3F] p-2 mb-2 rounded-xl shadow-md shadow-gray-600 flex flex-col items-center justify-center' :'hidden'} >
                         <h1 id="patientDetail" className=' font-semibold text-[#3B2B3F] text-xl'>{item.number}:{item.name}</h1>
                         <div >{item.result=="true" ? <div className='text-red-500 font-semibold text-lg flex justify-center'>Cancer Found</div>:<div className='text-green-700 font-semibold text-lg flex justify-center'>Cancer Not Found</div>}
                         <img src={item.url} alt="" />  
@@ -116,7 +116,7 @@ const HistoryDisplay = () => {
 
                 {fractureMessage==true ? <> 
                     {fractureItems.map((item) => (
-                        <div id="container" className={(filter=="fracture" || filter=="all") ? 'h-auto w-full border-2 border-[#3B2B3F] p-2 mb-2 rounded-xl shadow-md shadow-gray-600 flex flex-col items-center justify-center' :'hidden'}>
+                        <div id="container" className={(filter=="fracture" || filter=="all") ? 'max-[530px]:h-[90%] w-full border-2 border-[#3B2B3F] p-2 mb-2 rounded-xl shadow-md shadow-gray-600 flex flex-col items-center justify-center' :'hidden'}>
                             <h1 id="patientDetail" className=' font-semibold text-[#3B2B3F] text-xl'>{item.number}:{item.name}</h1>
                             <div >{item.result=="true" ? <div className='text-red-500 font-semibold text-lg flex justify-center'>Fracture Found</div>:<div className='text-green-700 font-semibold text-lg flex justify-center'>Fracture Not Found</div>}
                             <img src={item.url} alt="" />  

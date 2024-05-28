@@ -15,6 +15,7 @@ const Sidebar = ({screenwidth, setIsCollasp, setButtonClick}) => {
         {
             setIsCollasp(true)
             setButtonClick(false)
+            
         } 
     }
 
