@@ -101,7 +101,7 @@ const Sidebar = ({screenwidth, setIsCollasp, setButtonClick}) => {
                     © 2024 OsteoAI — 
                 </div>
                 <button className='h-10 w-10 bg-gray-800 flex items-center p-2 rounded-lg hover:bg-gray-900'>
-                    <img src={github} alt="OsteoAI Github" className='h-5 w-7' />
+                    <a href="https://github.com/sumitkrjha/OsteoAI" target='_blank'><img src={github} alt="OsteoAI Github" className='h-5 w-7' /></a>
                 </button>
             </div>
         </div>

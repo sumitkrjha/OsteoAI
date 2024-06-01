@@ -66,7 +66,7 @@ const AuthForm = ({formid}) => {
                     >
                         <Form className='flex flex-col items-center justify-center gap-16 mt-4'>
                             <div id="inputSection" className='h-12 w-[90%] flex flex-col gap-2 justify-start'>
-                                <label htmlFor="email" className='text-base text-[#3B2B3F] font-semibold ml-1 flex gap-4'>Username
+                                <label htmlFor="email" className='text-base text-[#3B2B3F] font-semibold ml-1 flex gap-4 '>Username
                                 <ErrorMessage name="email" component="div" className='text-red-500 font-mono'/>
                                 </label>
                                 <Field type="email" id="email" name="email" placeholder="Email" className="h-12 w-full p-4 rounded-lg border-b-2 border-b-black  outline-none focus:border-b-[#3B2B3F]"/>
@@ -145,7 +145,7 @@ const AuthForm = ({formid}) => {
                         <Form className='flex flex-col justify-start items-center gap-16 mt-4'>
                             <div id="personalInfoSection" className='h-12 w-full flex flex-col gap-3 justify-start mb-16'>
                                 <div id="firstName" className='w-full flex items-center justify-start gap-2'>
-                                    <label htmlFor="firstName" className='text-base text-[#3B2B3F] font-semibold ml-1 basis-[25%] flex flex-col'>First Name
+                                    <label htmlFor="firstName" className='text-base text-[#3B2B3F] font-semibold max-[400px]:ml-0 ml-1 basis-[25%] flex flex-col max-[400px]:text-sm'>First Name
                                     <ErrorMessage name="firstName" component="span" className='text-red-500 font-mono'/>
                                     </label>
                                     
@@ -153,14 +153,14 @@ const AuthForm = ({formid}) => {
                                 </div>
 
                                 <div id="lastName" className='flex items-center justify-center gap-2'>
-                                    <label htmlFor="lastName" className='text-base text-[#3B2B3F] font-semibold ml-1 basis-[25%] flex flex-col'>Last Name
+                                    <label htmlFor="lastName" className='text-base text-[#3B2B3F] font-semibold max-[400px]:ml-0 ml-1 basis-[25%] flex flex-col max-[400px]:text-sm'>Last Name
                                     <ErrorMessage name="lastName" component="div" className='text-red-500 font-mono'/>
                                     </label>
                                     <Field type="text" id="lastName" name="lastName" placeholder="Last Name" className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black  outline-none focus:border-b-[#3B2B3F]"/>
                                 </div>
 
                                 <div id="role" className='flex items-center justify-center gap-2'>
-                                    <label htmlFor="role" className='text-base text-[#3B2B3F] font-semibold ml-1 basis-[25%] text-center flex flex-col'>Role
+                                    <label htmlFor="role" className='text-base text-[#3B2B3F] font-semibold max-[400px]:ml-0 ml-1 basis-[25%] text-center flex flex-col max-[400px]:text-sm'>Role
                                     <ErrorMessage name="role" component="div" className='text-red-500 font-mono'/>
                                     </label>
                                     <Field type="text" id="role" name="role" placeholder="Role" className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black  outline-none focus:border-b-[#3B2B3F]"/>
@@ -169,14 +169,14 @@ const AuthForm = ({formid}) => {
                             </div>
                             <div id="credentialInputSection" className='h-12 w-full flex flex-col gap-3 justify-start'>
                                 <div id="username" className='flex items-center justify-center gap-2'>
-                                    <label htmlFor="email" className='text-base text-[#3B2B3F] font-semibold ml-1 basis-[25%] flex flex-col'>Username
+                                    <label htmlFor="email" className='text-base text-[#3B2B3F] font-semibold max-[400px]:ml-0 ml-1 basis-[25%] flex flex-col max-[400px]:text-sm'>Username
                                     <ErrorMessage name="email" component="div" className='text-red-500 font-mono'/>
                                     </label>
                                     <Field type="email" id="email" name="email" placeholder="Email" className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black  outline-none focus:border-b-[#3B2B3F]"/>
                                 </div>
 
                                 <div id="password" className='flex items-center justify-center gap-2'>
-                                <label htmlFor="password" className='text-base text-[#3B2B3F] font-semibold ml-1 basis-[25%] flex flex-col'>Password
+                                <label htmlFor="password" className='text-base text-[#3B2B3F] font-semibold max-[400px]:ml-0 ml-1 basis-[25%] flex flex-col max-[400px]:text-sm'>Password
                                 <ErrorMessage name="password" component="div" className='text-red-500 font-mono'/>
                                 </label>
                                 <Field type="password" id="password" name="password" placeholder="Password" className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black outline-none focus:border-b-[#3B2B3F]"/>

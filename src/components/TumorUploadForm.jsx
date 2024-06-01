@@ -31,7 +31,7 @@ const TumorUploadForm = () => {
 
     const predict =async(base64)=>{
       setIsLoader(true);
-      await fetch('https://osteoai-backend.onrender.com/predicttumor',{
+      await fetch('http://localhost:5000/predicttumor',{
         method:"POST",
         headers: {
           "Content-Type": "application/json"
@@ -109,10 +109,10 @@ const TumorUploadForm = () => {
           payload.patientNumber=values.patientNo;
         }}
       >
-        <Form className='h-[72%] max-[660px]:h-[85%] max-[530px]:h-[95%]'>
-          <div id="formContainer" className='h-full flex max-[660px]:flex-col p-2'>
+        <Form className='h-[72%] max-[660px]:h-[85%] max-[530px]:h-[95%] max-[400px]:h-[474px] max-[400px]:pt-4'>
+          <div id="formContainer" className='h-full flex max-[660px]:flex-col p-2 max-[400px]:h-[477px]'>
                 <div id="uploadBox" className='basis-2/5 p-2 flex items-center justify-center'>
-                  <label htmlFor="XrayImage" className='bg-transparent h-[90%] max-[660px]:h-[95%] w-[90%] max-[660px]:w-[75%]  border-2 rounded-xl border-black flex items-center justify-center hover:border-[#3B2B3F] hover:pb-5 hover:shadow-lg hover:shadow-[#3B2B3F] cursor-pointer'
+                  <label htmlFor="XrayImage" className='bg-transparent h-[90%] max-[660px]:h-[95%] w-[90%] max-[660px]:w-[75%] max-[400px]:w-[90%] border-2 rounded-xl border-black flex items-center justify-center hover:border-[#3B2B3F] hover:pb-5 hover:shadow-lg hover:shadow-[#3B2B3F] cursor-pointer max-[400px]:h-[200px]'
                   style={{
                     backgroundImage:`url(${imagePreview})`,
                     backgroundSize:'contain',
@@ -138,17 +138,15 @@ const TumorUploadForm = () => {
                   />
               
               { result=="none" ? <>
-              <div id="form" className=' basis-3/5 px-4 py-10 max-[660px]:py-0 flex flex-col items-center justify-center max-[660px]:justify-start gap-3'>
+              <div id="form" className=' basis-3/5 max-[400px]:mt-4 px-4 py-10 max-[660px]:py-0 flex flex-col items-center justify-center max-[660px]:justify-start gap-3 max-[400px]:gap-7 '>
               {isLoader ? <div id="loader"></div> : <>
-                <div id='inputField' className=' h-24 max-[660px]:h-10
-                 w-full p-2 max-[660px]:p-0 flex items-center justify-center'>
-                  <label htmlFor="patientNo" className='basis-[30%] text-[#3B2B3F] font-semibold '>Patient No.</label>
+                <div id='inputField' className=' h-24 max-[660px]:h-10 w-full p-2 max-[660px]:p-0 flex max-[400px]:flex-col items-center justify-center'>
+                  <label htmlFor="patientNo" className='basis-[30%] text-[#3B2B3F] font-semibold max-[400px]:w-full max-[400px]:flex max-[400px]:items-start'>Patient No.</label>
                   <ErrorMessage name="patientNo" component="div" className="text-red-500" />
                   <Field type="number" name="patientNo" id="patientNo" className='basis-[70%] p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg '  />
                 </div>
-                <div id='inputField' className='h-24 max-[660px]:h-10
-                 w-full p-2 max-[660px]:p-0 flex items-center justify-center'>
-                  <label htmlFor="patientName" className='basis-[30%] text-[#3B2B3F] font-semibold '>Patient Name</label>
+                <div id='inputField' className='h-24 max-[660px]:h-10 w-full p-2 max-[660px]:p-0 flex max-[400px]:flex-col items-center justify-center'>
+                  <label htmlFor="patientName" className='basis-[30%] text-[#3B2B3F] font-semibold max-[400px]:w-full max-[400px]:flex max-[400px]:items-start'>Patient Name</label>
                   <ErrorMessage name="patientName" component="div" className="text-red-500" />
                   <Field type="text" name="patientName" id="patientName" className='p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' />
                 </div>
@@ -160,11 +158,11 @@ const TumorUploadForm = () => {
               :
               <>
               {/* To showcase the result.jpg */}
-              <div id="result" className='basis-3/5 p-4  max-[530px]:py-0 flex  max-[530px]:items-start items-center justify-center '>
-                  <div id="resultCard" className='h-[98%] w-[75%] max-[530px]:h-[53%] max-[530px]:w-[85%] bg-[#FFF] flex flex-col  max-[530px]:flex-row items-center justify-center gap-3 border-2 border-black rounded-xl shadow-md shadow-[#3B2B3F]'>
+              <div id="result" className='basis-3/5 p-4 max-[530px]:py-0 flex max-[530px]:items-start items-center justify-center '>
+                  <div id="resultCard" className='h-[98%] w-[75%] max-[400px]:h-[98%] max-[400px]:w-[90%] max-[530px]:h-[53%] max-[530px]:w-[85%] bg-[#FFF] flex flex-col  max-[530px]:flex-row max-[400px]:flex-col items-center justify-center gap-3 border-2 border-black rounded-xl shadow-md shadow-[#3B2B3F]'>
                       {result==true ? <span className=' text-lg font-bold font-serif text-red-500'>Cancer Found</span>:
                       <span className=' text-lg  max-[530px]:text-sm font-bold font-serif text-green-500'>Cancer Not Found</span>}
-                      <img src={resultImage} alt='resultImage' className='h-[80%]  max-[530px]:h-[95%]' />
+                      <img src={resultImage} alt='resultImage' className='h-[80%] max-[530px]:h-[95%] max-[400px]:h-[80%]' />
                   </div>
               </div> 
               </>
