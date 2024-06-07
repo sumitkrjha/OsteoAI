@@ -99,7 +99,7 @@ const HistoryDisplay = () => {
         {isLoading=="true" ? <div id="loader"></div>
             :
             <>
-            <div id="itemContainer" className='bg-green-500 max-[400px]:h-[70%] h-[90%] max-[860px]:h-[80%] max-[530px]:h-[90%] w-full overflow-y-scroll p-2 grid grid-cols-3 max-[530px]:grid-cols-2 max-[400px]:grid-cols-1 gap-2'>
+            <div id="itemContainer" className=' max-[400px]:h-[70%] h-[90%] max-[860px]:h-[80%] max-[530px]:h-[90%] w-full overflow-y-scroll p-2 grid grid-cols-3 max-[530px]:grid-cols-2 max-[400px]:grid-cols-1 gap-2'>
                 {tumorMessage==true ? <> 
                 {tumorItems.map((item) => (
                     <div id="container" className={(filter=="tumor" || filter=="all")? 'w-full border-2 border-[#3B2B3F] p-2 mb-2 rounded-xl shadow-md shadow-gray-600 flex flex-col items-center justify-center' :'hidden'} >

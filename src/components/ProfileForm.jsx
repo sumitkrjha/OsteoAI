@@ -27,14 +27,14 @@ const ProfileForm = () => {
             email:'',
         }}
 
-        validate={(values)=>{
-            const errors={};
-            if(!values.firstName) errors.firstName='Required';
-            if(!values.lastName) errors.lastName='Required';
-            if(!values.role) errors.role='Required';
+        // validate={(values)=>{
+        //     const errors={};
+        //     if(!values.firstName) errors.firstName='Required';
+        //     if(!values.lastName) errors.lastName='Required';
+        //     if(!values.role) errors.role='Required';
     
-            return errors
-        }}
+        //     return errors
+        // }}
 
         onSubmit={  (values)=>{        
             
@@ -60,6 +60,7 @@ const ProfileForm = () => {
                                 <span className={(imagePreview===null) ? 'h-full w-full flex items-center justify-center text-lg font-semibold text-[#3B2B3F]':'h-full w-full flex items-center justify-center text-transparent hover:text-lg hover:text-black hover:font-semibold'}>Upload Profile Image</span>
                             </label>
                             <Field type="file" id="avatar" name="avatar" accept='images/*' className='hidden'
+                            disabled
                             onChange={(e)=>{
                                 const selectedFile=e.target.files[0];
                                 if(selectedFile){
@@ -77,25 +78,25 @@ const ProfileForm = () => {
                         <div id='inputField' className='max-[400px]:h-14 h-24 w-full p-2 flex items-center justify-center  max-[570px]:gap-2'>
                             <label htmlFor="firstName" className='basis-[30%] text-[#3B2B3F] font-semibold '>First Name</label>
                             <ErrorMessage name="firstName" component="div" className="text-red-500" />
-                            <Field type="text" name="firstName" id="firstName" className='basis-[70%] p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg ' value={user.firstName}/>
+                            <Field type="text" name="firstName" id="firstName" className='basis-[70%] p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg ' value={user.firstName} disabled/>
                         </div>
 
                         <div id='inputField' className=' max-[400px]:h-14 h-24 w-full p-2 flex items-center justify-center max-[570px]:gap-2'>
                             <label htmlFor="lastName" className='basis-[30%] text-[#3B2B3F] font-semibold '>Last Name</label>
                             <ErrorMessage name="lastName" component="div" className="text-red-500" />
-                            <Field type="text" name="lastName" id="lastName" className='p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' value={user.lastName}/>
+                            <Field type="text" name="lastName" id="lastName" className='p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' value={user.lastName} disabled/>
                         </div>
 
                         <div id='inputField' className='max-[400px]:h-14 h-24 w-full p-2 flex items-center justify-center max-[570px]:gap-2'>
                             <label htmlFor="role" className='basis-[30%] text-[#3B2B3F] font-semibold '>Role</label>
                             <ErrorMessage name="role" component="div" className="text-red-500" />
-                            <Field type="text" name="role" id="role" className='p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' value={user.role} />
+                            <Field type="text" name="role" id="role" className='p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' value={user.role} disabled/>
                         </div>
 
                         <div id='inputField' className='max-[400px]:h-14 h-24 w-full p-2 flex items-center justify-center max-[570px]:gap-2'>
                             <label htmlFor="role" className='basis-[30%] text-[#3B2B3F] font-semibold '>Email</label>
                             <ErrorMessage name="email" component="div" className="text-red-500" />
-                            <Field type="email" name="email" id="email" className='p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' value={user.email} />
+                            <Field type="email" name="email" id="email" className='p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' value={user.email} disabled />
                         </div>
                         
                         {/* <button type="submit" className='mt-5 p-2 h-12 w-36 bg-[#FFF] border-2 border-[#3B2B3F] text-green-500 font-semibold rounded-xl hover:shadow-md hover:shadow-[#3B2B3F] hover:border-purply hover:text-green-300 hover:bg-[#3B2B3F]'>Submit</button> */}

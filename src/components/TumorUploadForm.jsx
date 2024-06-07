@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useContext, useState } from 'react'
 import "../App.css"
 import {UserContext} from "../pages/Dashboard"
+import toast from 'react-hot-toast';
 
 const TumorUploadForm = () => {
 
@@ -46,6 +47,8 @@ const TumorUploadForm = () => {
           })
       })
       .catch(err=>{
+        toast.error("Failed to fetch");
+        setIsLoader(false)
         console.log("Error:"+ err.message);
       })
 

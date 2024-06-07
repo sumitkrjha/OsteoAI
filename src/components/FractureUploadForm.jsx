@@ -45,6 +45,8 @@ const FractureUploadForm = () => {
           })
       })
       .catch(err=>{
+        toast.error("Failed to fetch");
+        setIsLoader(false)
         console.log("Error:"+ err.message);
       })
 
