@@ -12,7 +12,7 @@ const HomeAppMenu = ({activeApp, setActiveApp}) => {
             <h2 className='font-bold text-3xl text-gray-800 mb-2 max-[400px]:text-2xl'>Application</h2>
             <p className=' text-base text-gray-600 mb-2 max-[400px]:text-md'>Choose the required application from below provided options.</p>
             <div id="appOptionList" className='h-24 p-4 pb-0 flex items-center justify-center'>
-              <section className='bg-white w-[440px] max-[400px]:flex-col py-2 px-7 flex justify-between border-2 border-gray-600 rounded-3xl gap-5 max-[400px]:gap-2 hover:shadow-xl'>
+              <section className='bg-white w-[440px] max-[400px]:flex-col max-[400px]:justify-center max-[400px]:items-center py-2 px-7 flex justify-between border-2 border-gray-600 rounded-3xl gap-5 max-[400px]:gap-2 hover:shadow-xl'>
                 <button className={`${activeApp=='tumor' ? 'h-10 w-40 p-2 pl-5 rounded-3xl bg-green-400 text-black text-base font-normal flex justify-center shadow-xl' : 'h-10 w-40 p-2 rounded-3xl text-[#3B2B3F] text-base font-medium flex justify-center hover:bg-green-400 hover:text-black hover:font-normal hover:shadow-xl hover:pl-5'}`}
                 onClick={()=>handleClick('tumor')}>Bone Tumor</button>
                 

@@ -75,7 +75,7 @@ const Dashboard = () => {
                       <Outlet/>
                     </UserContext.Provider>
                   </div>
-                  <div id="userInfoContainer" className='max-[1100px]:basis-[10%] max-[660px]:basis-[5%] max-[530px]:basis-[5%] max-[400px]:w-[320px] basis-[20%]'>
+                  <div id="userInfoContainer" className='max-[1100px]:basis-[10%] max-[660px]:basis-[5%] max-[530px]:basis-[5%] max-[400px]:w-[328px] basis-[20%]'>
                     <UserContext.Provider value={{user, setUser}}>
                       <UserInfoBar screenwidth={screenwidth}/>
                     </UserContext.Provider>

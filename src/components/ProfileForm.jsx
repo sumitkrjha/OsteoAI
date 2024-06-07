@@ -73,7 +73,7 @@ const ProfileForm = () => {
                         </div>
                         <ErrorMessage name="avatar" component="div" className="text-red-500 text-xl font-semibold" />
                     </div>
-                    <div id="formContainer" className='max-[400px]:m-0 m-4 basis-3/5 p-5'>
+                    <div id="formContainer" className='max-[400px]:m-0 max-[400px]:w-[240px] m-4 basis-3/5 p-5'>
                         <h2 className='font-bold text-2xl text-gray-800'>Profile Info</h2>
                         <div id='inputField' className='max-[400px]:h-14 h-24 w-full p-2 flex items-center justify-center  max-[570px]:gap-2'>
                             <label htmlFor="firstName" className='basis-[30%] text-[#3B2B3F] font-semibold '>First Name</label>
