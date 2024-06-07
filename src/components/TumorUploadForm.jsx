@@ -146,12 +146,12 @@ const TumorUploadForm = () => {
                 <div id='inputField' className=' h-24 max-[660px]:h-10 w-full p-2 max-[660px]:p-0 flex max-[400px]:flex-col items-center justify-center'>
                   <label htmlFor="patientNo" className='basis-[30%] text-[#3B2B3F] font-semibold max-[400px]:w-full max-[400px]:flex max-[400px]:items-start'>Patient No.</label>
                   <ErrorMessage name="patientNo" component="div" className="text-red-500" />
-                  <Field type="number" name="patientNo" id="patientNo" className='basis-[70%] p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg '  />
+                  <Field type="number" name="patientNo" id="patientNo" className='max-[400px]:w-[200px] basis-[70%] p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg '  />
                 </div>
                 <div id='inputField' className='h-24 max-[660px]:h-10 w-full p-2 max-[660px]:p-0 flex max-[400px]:flex-col items-center justify-center'>
                   <label htmlFor="patientName" className='basis-[30%] text-[#3B2B3F] font-semibold max-[400px]:w-full max-[400px]:flex max-[400px]:items-start'>Patient Name</label>
                   <ErrorMessage name="patientName" component="div" className="text-red-500" />
-                  <Field type="text" name="patientName" id="patientName" className='p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' />
+                  <Field type="text" name="patientName" id="patientName" className='p-2 max-[400px]:w-[200px] border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' />
                 </div>
                 <button type="submit" className='p-2 h-12 w-36 bg-[#FFF] border-2 border-[#3B2B3F] text-green-500 font-semibold rounded-xl hover:shadow-md hover:shadow-[#3B2B3F] hover:border-purply hover:text-green-300 hover:bg-[#3B2B3F]  '>Submit</button>
                 </>
