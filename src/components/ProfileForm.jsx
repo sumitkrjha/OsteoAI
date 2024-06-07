@@ -73,7 +73,7 @@ const ProfileForm = () => {
                         </div>
                         <ErrorMessage name="avatar" component="div" className="text-red-500 text-xl font-semibold" />
                     </div>
-                    <div id="formContainer" className='max-[400px]:m-0 m-4 basis-3/5 p-5 max-[400px]:p-2 max-[400px]:flex max-[400px]:flex-col max-[400px]:gap-3 max-[400px]:bg-blue-300'>
+                    <div id="formContainer" className='max-[400px]:m-0 m-4 basis-3/5 p-5 max-[400px]:p-2 max-[400px]:flex max-[400px]:flex-col max-[400px]:gap-3'>
                         <h2 className='font-bold text-2xl text-gray-800 max-[400px]:text-center max-[400px]:mb-2'>Profile Info</h2>
                         <div id='inputField' className='max-[400px]:h-14 h-24 w-full p-2 flex max-[400px]:flex-col items-center justify-center max-[570px]:gap-2 max-[400px]:gap-0'>
                             <label htmlFor="firstName" className='basis-[30%] text-[#3B2B3F] font-semibold max-[400px]:items-start max-[400px]:w-full'>First Name</label>
@@ -84,19 +84,19 @@ const ProfileForm = () => {
                         <div id='inputField' className=' max-[400px]:h-14 h-24 w-full p-2 flex max-[400px]:flex-col items-center justify-center max-[570px]:gap-2 max-[400px]:gap-0'>
                             <label htmlFor="lastName" className='basis-[30%] text-[#3B2B3F] font-semibold max-[400px]:items-start max-[400px]:w-full '>Last Name</label>
                             <ErrorMessage name="lastName" component="div" className="text-red-500" />
-                            <Field type="text" name="lastName" id="lastName" className='p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' value={user.lastName} disabled/>
+                            <Field type="text" name="lastName" id="lastName" className='max-[400px]:w-[265px] p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' value={user.lastName} disabled/>
                         </div>
 
                         <div id='inputField' className='max-[400px]:h-14 h-24 w-full p-2 flex max-[400px]:flex-col items-center justify-center max-[570px]:gap-2 max-[400px]:gap-0'>
                             <label htmlFor="role" className='basis-[30%] text-[#3B2B3F] font-semibold max-[400px]:items-start max-[400px]:w-full '>Role</label>
                             <ErrorMessage name="role" component="div" className="text-red-500" />
-                            <Field type="text" name="role" id="role" className='p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' value={user.role} disabled/>
+                            <Field type="text" name="role" id="role" className='max-[400px]:w-[265px] p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' value={user.role} disabled/>
                         </div>
 
                         <div id='inputField' className='max-[400px]:h-14 h-24 w-full p-2 flex max-[400px]:flex-col items-center justify-center max-[570px]:gap-2 max-[400px]:gap-0'>
                             <label htmlFor="role" className='basis-[30%] text-[#3B2B3F] font-semibold max-[400px]:items-start max-[400px]:w-full '>Email</label>
                             <ErrorMessage name="email" component="div" className="text-red-500" />
-                            <Field type="email" name="email" id="email" className='p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' value={user.email} disabled />
+                            <Field type="email" name="email" id="email" className='max-[400px]:w-[265px] p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg basis-[70%]' value={user.email} disabled />
                         </div>
                         
                         {/* <button type="submit" className='mt-5 p-2 h-12 w-36 bg-[#FFF] border-2 border-[#3B2B3F] text-green-500 font-semibold rounded-xl hover:shadow-md hover:shadow-[#3B2B3F] hover:border-purply hover:text-green-300 hover:bg-[#3B2B3F]'>Submit</button> */}
