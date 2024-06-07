@@ -78,7 +78,7 @@ const ProfileForm = () => {
                         <div id='inputField' className='max-[400px]:h-14 h-24 w-full p-2 flex max-[400px]:flex-col items-center justify-center max-[570px]:gap-2 max-[400px]:gap-0'>
                             <label htmlFor="firstName" className='basis-[30%] text-[#3B2B3F] font-semibold max-[400px]:items-start max-[400px]:w-full'>First Name</label>
                             <ErrorMessage name="firstName" component="div" className="text-red-500" />
-                            <Field type="text" name="firstName" id="firstName" className='basis-[70%] p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg' value={user.firstName} disabled/>
+                            <Field type="text" name="firstName" id="firstName" className='basis-[70%] max-[400px]:w-[265px] p-2 border border-gray-400 hover:border-[#3B2B3F] focus:shadow-sm focus:shadow-[#3B2B3F] focus:border-[#3B2B3F] focus:outline-none rounded-lg' value={user.firstName} disabled/>
                         </div>
 
                         <div id='inputField' className=' max-[400px]:h-14 h-24 w-full p-2 flex max-[400px]:flex-col items-center justify-center max-[570px]:gap-2 max-[400px]:gap-0'>
