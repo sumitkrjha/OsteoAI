@@ -58,15 +58,15 @@ To help medical professionals determine the presence of bone tumors and bone fra
 ### API Endpoints
 
 - **Authentication**
-    - **POST /auth/signup**: Register a new user.
-    - **POST /auth/login**: Authenticate a user and return a JWT token.
-    - **GET /api/user**: To get the user data.
+    - **/auth/signup**: Register a new user.
+    - **/auth/login**: Authenticate a user and return a JWT token.
+    - **/api/user**: To get the user data.
 
 - **Data Handling**
-    - **POST /data/tumor**: Send Tumor data to the database.
-    - **POST /find/returnTumor**: Get the Tumor data from the database.
-    - **POST /upload/fracture**: Send Fracture data to the database.
-    - **POST /get/returnFracture**: Get the Fracture data from the database.
+    - **/data/tumor**: Send Tumor data to the database.
+    - **/find/returnTumor**: Get the Tumor data from the database.
+    - **/upload/fracture**: Send Fracture data to the database.
+    - **/get/returnFracture**: Get the Fracture data from the database.
     
 
 ### License
