@@ -12,9 +12,9 @@ To help medical professionals determine the presence of bone tumors and bone fra
 
 ### Code Repositories
 
-- **Web Frontend**: [GitHub Frontend Branch](https://github.com/sumitkrjha/OsteoAI/tree/Backend)
+- **Web Frontend**: [GitHub Frontend Branch](https://github.com/sumitkrjha/OsteoAI/tree/WebFrontend)
 - **Web Backend**: [GitHub Backend Branch](https://github.com/sumitkrjha/OsteoAI/tree/WebBackend)
-- **AI Backend**: [GitHub AI Backend Branch](https://github.com/sumitkrjha/OsteoAI/tree/WebFrontend)
+- **AI Backend**: [GitHub AI Backend Branch](https://github.com/sumitkrjha/OsteoAI/tree/Backend)
 
 ### Features and Functions
 
