@@ -313,13 +313,21 @@ const AuthForm = ({ formid }) => {
                     />
                   </label>
                   <Field
-                    type="password"
+                    type={status ? "text" : "password"}
                     id="password"
                     name="password"
                     placeholder="Password"
-                    className="h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black outline-none focus:border-b-[#3B2B3F]"
+                    className="realtive h-12 basis-[75%] p-4 rounded-lg border-b-2 border-b-black outline-none focus:border-b-[#3B2B3F]"
                   />
                 </div>
+                <span
+                  className="relative h-auto w-14 flex items-center justify-center bottom-full left-[85%] text-base font-semibold text-[#3B2B3F] cursor-pointer"
+                  onClick={() => {
+                    setStatus(!status);
+                  }}
+                >
+                  {status ? "Hide" : "Show"}
+                </span>
               </div>
               {isLoader ? (
                 <div id="Authloader"></div>
