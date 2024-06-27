@@ -1,6 +1,6 @@
 # OsteaoAI - Web Backend
 
-This repository contains the backend code for OsteaoAI, an AI-powered web application designed to assist medical professionals in determining the presence of bone tumors and bone fractures in X-ray images.
+This branch contains the backend code for OsteaoAI, an AI-powered web application designed to assist medical professionals in determining the presence of bone tumors and bone fractures in X-ray images.
 
 **Live Application**: [OsteaoAI](https://osteoai.onrender.com)
 
