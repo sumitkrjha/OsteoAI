@@ -2,10 +2,31 @@
 
 This branch contains the frontend code for OsteaoAI, an AI-powered web application designed to assist medical professionals in determining the presence of bone tumors and bone fractures in X-ray images.
 
-![OsteoAI](https://github.com/sumitkrjha/OsteoAI/assets/167055828/30d9b80d-2ee6-4bba-a7db-039b6dcf51e7)
-
-
 **Live Application**: [OsteaoAI](https://osteoai.onrender.com)
+
+### Application Screenshots
+
+#### Login
+![image](https://github.com/sumitkrjha/OsteoAI/assets/167055828/4d453ff6-0216-46e8-aea6-c4e1af70fed9)
+
+#### Signup/Resigter
+![image](https://github.com/sumitkrjha/OsteoAI/assets/167055828/f624c47e-6da2-401c-bff4-39f70c903906)
+
+### Home Page - Tumor Detection
+![image](https://github.com/sumitkrjha/OsteoAI/assets/167055828/2fd0cf5b-1440-41fe-86e8-e390720941ce)
+
+![image](https://github.com/sumitkrjha/OsteoAI/assets/167055828/c76290b3-122f-4507-811c-7fdae788d983)
+
+### Home Page - Fracture Detection
+![image](https://github.com/sumitkrjha/OsteoAI/assets/167055828/f2507525-b768-4cca-9653-4b06b9f08208)
+
+![image](https://github.com/sumitkrjha/OsteoAI/assets/167055828/638497fe-99d3-4a0f-bd78-430adbf704bb)
+
+### History Page
+![image](https://github.com/sumitkrjha/OsteoAI/assets/167055828/254a530f-4f15-436d-9cad-f6d58da424f8)
+
+### User Profile Page
+![image](https://github.com/sumitkrjha/OsteoAI/assets/167055828/d4c1de80-cf38-4fb2-96cd-ac7c4eae5eb9)
 
 ### Problem Statement
 
