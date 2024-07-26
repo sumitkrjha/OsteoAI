@@ -6,7 +6,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
-// import Dataset from './pages/Dataset';
+// import Dataset from "./pages/Dataset";
 
 function App() {
   return (
@@ -17,8 +17,8 @@ function App() {
         <Route path="home" element={<Home />} />
         <Route path="profile" element={<Profile />} />
         <Route path="history" element={<History />} />
+        {/* <Route path="exampleImages" element={<Dataset />} /> */}
         <Route index element={<Navigate to="home" />} />
-        {/* <Route path="exampleImages" element={<Dataset/>}  /> */}
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
