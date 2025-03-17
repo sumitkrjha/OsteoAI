@@ -90,11 +90,13 @@ const Header = () => {
                 </a>
               </li>
               <li>
-                <button className="inline-flex items-center justify-center text-md font-medium border-2 border-[#3B2B3F] rounded-3xl h-12 w-36 px-3 hover:bg-[#3B2B3F] hover:text-green-300 hover:shadow-md shadow-[#3B2B3F]">
-                  <span className="outline-none cursor-pointer select-none">
-                    Get Started
-                  </span>
-                </button>
+                <Link to="/login">
+                  <button className="inline-flex items-center justify-center text-md font-medium border-2 border-[#3B2B3F] rounded-3xl h-12 w-36 px-3 hover:bg-[#3B2B3F] hover:text-green-300 hover:shadow-md shadow-[#3B2B3F]">
+                    <span className="outline-none cursor-pointer select-none">
+                      Get Started
+                    </span>
+                  </button>
+                </Link>
               </li>
             </ul>
           </div>
