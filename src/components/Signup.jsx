@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AuthForm from "./AuthForm";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { useState } from "react";
 
-const Header = () => {
+const Header = ({ isLoginIn }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -43,10 +43,10 @@ const Header = () => {
               <div className="absolute left-0 top-full flex justify-center"></div>
             </nav>
           </div>
-          <Link to="/login">
+          <Link to={isLoginIn ? "/" : "/login"}>
             <button className="hidden md:inline-flex items-center justify-center text-md font-medium border-2 border-[#3B2B3F] rounded-3xl h-12 w-36 px-3 hover:bg-[#3B2B3F] hover:text-green-300 hover:shadow-md shadow-[#3B2B3F]">
               <span className="outline-none cursor-pointer select-none">
-                Get Started
+                {isLoginIn ? "Dashboard" : "Get Started"}
               </span>
             </button>
           </Link>
@@ -90,10 +90,10 @@ const Header = () => {
                 </a>
               </li>
               <li>
-                <Link to="/login">
+                <Link to={isLoginIn ? "/" : "/login"}>
                   <button className="inline-flex items-center justify-center text-md font-medium border-2 border-[#3B2B3F] rounded-3xl h-12 w-36 px-3 hover:bg-[#3B2B3F] hover:text-green-300 hover:shadow-md shadow-[#3B2B3F]">
                     <span className="outline-none cursor-pointer select-none">
-                      Get Started
+                      {isLoginIn ? "Dashboard" : "Get Started"}
                     </span>
                   </button>
                 </Link>

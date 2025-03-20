@@ -19,7 +19,7 @@ const Sidebar = ({ screenwidth, setIsCollasp, setButtonClick }) => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    navigate("/login");
+    navigate("/landing");
   };
 
   const handleClose = () => {
